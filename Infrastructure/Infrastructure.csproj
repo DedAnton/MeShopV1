@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<None Remove="C:\Users\anton\.nuget\packages\linq2db.postgresql\5.4.1\contentFiles\any\any\LinqToDB.Templates\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="linq2db.AspNet" Version="5.4.1" />
+    <PackageReference Include="linq2db.EntityFrameworkCore" Version="8.1.0" />
+    <PackageReference Include="linq2db.PostgreSQL" Version="5.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+	<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
+	<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
+	<PackageReference Include="Scalar.AspNetCore" Version="1.2.15" />
+	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+	<PackageReference Include="Hangfire" Version="1.8.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>

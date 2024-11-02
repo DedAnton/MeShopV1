@@ -1,0 +1,76 @@
+@Host = http://localhost:5059
+
+POST {{Host}}/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "antondinamo@mail.ru",
+    "password": "1234"
+}
+###
+
+POST {{Host}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "antondinamo@mail.ru",
+    "password": "1234"
+}
+
+###
+
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTkzODYwMi1kOGQ4LTRjMzctYjU0Ni1lNDc5ZjViNzkyZTMiLCJlbWFpbCI6ImFudG9uZGluYW1vQG1haWwucnUiLCJuYmYiOjE3MzA0NjYxNDMsImV4cCI6MTczMDQ2OTc0MywiaWF0IjoxNzMwNDY2MTQzfQ.M1960sFmIiVWqvx_RFaCaqE05PhxJnGH-L_xW_9LbVw
+@accessToken=Bearer {{token}}
+###
+
+GET {{Host}}/cart/items
+Authorization: {{accessToken}}
+###
+
+GET {{Host}}/catalog/products/categories/обувь
+
+###
+
+POST {{Host}}/catalog/products
+Accept: application/json
+
+{
+
+}
+
+###
+
+POST {{Host}}/orders
+Authorization: {{accessToken}}
+Content-Type: application/json
+
+{
+  "lines": [
+    {
+        "productId": "deced988-8484-4fa1-a9af-1ddd7bf2560a",
+        "quantity": 12
+    }
+  ],
+  "cardInfo": {
+    "cardNumber": "0000-0000-0000-0000",
+    "expiredOn": "2024-11-01",
+    "cvv": "000",
+    "cardholderName": "Vasya Pupkin"
+  },
+  "shipment": {
+    "carrier": "FedEx",
+    "recipient": {
+      "name": "Vasya",
+      "phone": "+79007002010"
+    },
+    "address": {
+      "addressLine1": "2268 S Tongass Hwy",
+      "addressLine2": "",
+      "city": "Ketchikan",
+      "state": "Alaska",
+      "zipCode": "99901",
+      "country": "USA"
+    }
+  }
+}

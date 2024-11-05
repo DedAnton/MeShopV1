@@ -1,5 +1,4 @@
 using Infrastructure;
-using MeShopV1.Bascket;
 using MeShopV1.Cart;
 using MeShopV1.Catalog;
 using MeShopV1.Inventory;
@@ -33,5 +32,7 @@ CartApi.Map(app);
 CatalogApi.Map(app);
 InventoryApi.Map(app);
 OrderApi.Map(app);
+
+app.MigrateDatabase();
 
 app.Run();

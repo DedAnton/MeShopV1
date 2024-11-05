@@ -1,4 +1,4 @@
-﻿namespace MeShopV1.Bascket;
+﻿namespace MeShopV1.Cart;
 
 public record ItemRequest(Guid ProductId, uint Quantity);
 

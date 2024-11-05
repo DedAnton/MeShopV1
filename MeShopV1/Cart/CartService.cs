@@ -1,7 +1,6 @@
 ﻿using Infrastructure.Database;
 using Infrastructure.Database.Entities;
 using LinqToDB;
-using MeShopV1.Bascket;
 using System.Collections.Immutable;
 
 namespace MeShopV1.Cart;

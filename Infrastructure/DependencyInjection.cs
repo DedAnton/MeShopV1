@@ -22,6 +22,8 @@ using System.Text;
 
 namespace Infrastructure;
 
+public record DatabaseConnectionString(string Value);
+
 public static class DependencyInjection
 {
     public static void AddDatabase(this IHostApplicationBuilder builder)
@@ -40,6 +42,16 @@ public static class DependencyInjection
                 .UseMappingSchema(mappingSchema));
 
         builder.Services.AddScoped<IDataConnection>(x => x.GetRequiredService<ApplicationDataConnection>());
+    }
+
+    public static void MigrateDatabase(this WebApplication app)
+    {
+        var connectionString = app.Configuration.GetDatabaseConnectionString();
+        var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
+           .UseSqlServer(connectionString)
+           .Options;
+        using var context = new ApplicationDbContext(dbOptions);
+        context.Database.Migrate();
     }
 
     public static void AddAuth(this IHostApplicationBuilder builder)
@@ -137,5 +149,5 @@ public static class DependencyInjection
     }
 
     private static string GetDatabaseConnectionString(this IConfiguration configuration) => 
-        configuration.GetConnectionString("SqlServer") ?? throw new Exception("Conncetion string 'SqlServer' not found");
+        configuration.GetConnectionString("SqlServer") ?? throw new Exception("Connection string 'SqlServer' not found");
 }

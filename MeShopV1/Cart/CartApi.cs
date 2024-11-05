@@ -1,8 +1,6 @@
-﻿using Infrastructure.Database.Entities;
-using Infrastructure.Identity;
-using MeShopV1.Cart;
+﻿using Infrastructure.Identity;
 
-namespace MeShopV1.Bascket;
+namespace MeShopV1.Cart;
 
 public static class CartApi
 {
